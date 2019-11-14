@@ -1,4 +1,3 @@
-import CryptoSubNav from './crypto-sub-nav'
 import Encrypt from './operations/encrypt'
 import Decrypt from './operations/decrypt'
 import Sign from './operations/sign'
@@ -13,11 +12,12 @@ export const cryptoSubRoutes = {
 }
 
 export const newRoutes = {
+  //. Crypto tab is driven by the sub nav on desktop
   cryptoRoot: {
-    get screen() {
+    getScreen() {
       return require('./crypto-sub-nav').default
     },
   },
 }
 
-export const modalRoutes = {}
+export const newModalRoutes = {}

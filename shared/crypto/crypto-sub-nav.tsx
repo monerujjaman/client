@@ -1,5 +1,6 @@
 import * as Kb from '../common-adapters'
 import * as React from 'react'
+import * as Shim from '../router-v2/shim'
 import {NavigationViewProps, createNavigator, StackRouter, SceneView} from '@react-navigation/core'
 import {cryptoSubRoutes} from './routes'
 
@@ -34,5 +35,13 @@ const CryptoSubNavigator = createNavigator(
   StackRouter(Shim.shim(cryptoSubRoutes), {initialRouteName}),
   {}
 )
+
+CryptoSubNavigator.navigationOptions = {
+  header: undefined,
+  headerTitle: 'Crypto Toolkit',
+  title: 'Crypto Toolkit',
+}
+
+export default CryptoSubNavigator
 
 // TODO: @jacob Wrap and export CryptoSubNavigator like _OnboardingOrWallets

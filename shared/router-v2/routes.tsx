@@ -26,6 +26,7 @@ type RoutePlusTab = {route: RouteMap; tab: Tabs.Tab}
 const _newRoutes: ReadonlyArray<RoutePlusTab> = [
   {route: deviceNewRoutes, tab: isMobile ? Tabs.settingsTab : Tabs.devicesTab} as RoutePlusTab,
   {route: chatNewRoutes, tab: Tabs.chatTab} as RoutePlusTab,
+  {route: cryptoNewRoutes, tab: Tabs.cryptoTab} as RoutePlusTab,
   {route: peopleNewRoutes, tab: Tabs.peopleTab} as RoutePlusTab,
   {route: profileNewRoutes, tab: Tabs.peopleTab} as RoutePlusTab,
   {route: fsNewRoutes, tab: Tabs.fsTab} as RoutePlusTab,
@@ -60,6 +61,7 @@ export const tabRoots = {
 
 export const modalRoutes: RouteMap = {
   ...(chatNewModalRoutes as RouteMap),
+  ...(cryptoNewModalRoutes as RouteMap),
   ...(deviceNewModalRoutes as RouteMap),
   ...(fsNewModalRoutes as RouteMap),
   ...(gitNewModalRoutes as RouteMap),
