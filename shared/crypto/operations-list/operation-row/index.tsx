@@ -13,11 +13,11 @@ const OperationRow = (props: Props) => {
     <Kb.ClickableBox onClick={props.onSelect}>
       <Kb.Box style={styles.rowContainer} className="hover_container">
         <Kb.Box
-          className={Styles.classnames('hover_contained', 'hover_background_color_blueGreyDark', {
+          className={Styles.classNames('hover_contained', 'hover_background_color_blueGreyDark', {
             background_color_blueGreyDark: props.isSelected,
           })}
         >
-          <Kb.Text>{props.title}</Kb.Text>
+          <Kb.Text type="BodySemibold">{props.title}</Kb.Text>
         </Kb.Box>
       </Kb.Box>
     </Kb.ClickableBox>
