@@ -1,9 +1,11 @@
 import * as React from 'react'
 import * as Kb from '../../../common-adapters'
+import * as Types from '../../../constants/types/crypto'
 import * as Styles from '../../../styles'
 
 type Props = {
   title: string
+  tab: Types.CryptoSubTab
   isSelected: boolean
   onSelect: () => void
 }

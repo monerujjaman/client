@@ -1,27 +1,27 @@
 import * as Container from '../../../util/container'
 import * as RouteTreeGen from '../../../actions/route-tree-gen'
-import {CryptoSubTab} from '../../../constants/crypto'
+import * as Types from '../../../constants/types/crypto'
 import OperationRow from '.'
 
 type OwnProps = {
   title: string
   isSelected: boolean
-  onSelect: () => void
+  tab: Types.CryptoSubTab
 }
 
-const mapStateToProps = (state: Container.TypedState, ownProps: OwnProps) => ({})
+const mapStateToProps = (/*state: Container.TypedState*/) => ({})
 
-// TODO @jacob - Add navigation for onSelect
 const mapDispatchToProps = (dispatch: Container.TypedDispatch) => ({
-  _switchOperationTab: (cryptoSubTab: CryptoSubTab) => {
+  _switchOperationTab: (cryptoSubTab: Types.CryptoSubTab) => {
     dispatch(RouteTreeGen.createNavigateAppend({path: [cryptoSubTab]}))
   },
 })
 
 const mergeProps = (stateProps, dispatchProps, ownProps: OwnProps) => ({
   ...stateProps,
-  ...dispatchProps,
-  ...ownProps,
+  onSelect: dispatchProps._switchOperationTab,
+  title: ownProps.title,
+  tab: ownProps.tab,
 })
 
 export default Container.namedConnect(

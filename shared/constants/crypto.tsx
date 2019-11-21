@@ -1,4 +1,4 @@
-export const EncryptTab = 'encryptTab'
-export const DecryptTab = 'decryptTab'
-export const SignTab = 'SignTab'
-export const VerifyTab = 'VerifyTab'
+export const encryptTab = 'encryptTab'
+export const decryptTab = 'decryptTab'
+export const signTab = 'signTab'
+export const verifyTab = 'verifyTab'

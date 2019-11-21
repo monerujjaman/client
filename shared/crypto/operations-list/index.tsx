@@ -2,54 +2,71 @@ import * as React from 'react'
 import * as Kb from '../../common-adapters'
 import * as Styles from '../../styles'
 import * as Constants from '../../constants/crypto'
-import {CryptoSubTab} from '../../constants/types/crypto'
+import * as Types from '../../constants/types/crypto'
 import OperationRow from './operation-row/container'
 
 type Props = {
   children?: React.ReactNode
+  routeSelected: Types.CryptoSubTab
 }
 
 type Row = {
   title: string
-  tab: CryptoSubTab
+  tab: Types.CryptoSubTab
 }
 
-const rows = [
+const rows: Array<Row> = [
   {
-    tab: Constants.EncryptTab,
+    tab: Constants.encryptTab,
     title: 'Encrypt',
   },
   {
-    tab: Constants.DecryptTab,
+    tab: Constants.decryptTab,
     title: 'Decrypt',
   },
   {
-    tab: Constants.SignTab,
+    tab: Constants.signTab,
     title: 'Sign',
   },
   {
-    tab: Constants.VerifyTab,
+    tab: Constants.verifyTab,
     title: 'Verify',
   },
 ]
 
-const renderItem = (_: number, row: Row) => {
-  return <OperationRow key={row.title} title={row.title} />
+const itemHeight = {height: 100, type: 'fixed'} as const
+
+class OperationsList extends React.PureComponent<Props> {
+  _renderItem = (_: number, row: Row) => {
+    return (
+      <Kb.ListItem2
+        type="Small"
+        firstItem={true}
+        body={
+          <OperationRow
+            key={row.tab}
+            isSelected={this.props.routeSelected === row.tab}
+            title={row.title}
+            tab={row.tab}
+          />
+        }
+      />
+    )
+  }
+
+  render() {
+    return (
+      <Kb.Box2 direction="horizontal" fullHeight={true} fullWidth={true}>
+        <Kb.Box2 direction="vertical" fullHeight={true} style={styles.operationsListContainer}>
+          <Kb.BoxGrow>
+            <Kb.List2 itemHeight={itemHeight} items={rows} renderItem={this._renderItem} keyProperty="key" />
+          </Kb.BoxGrow>
+        </Kb.Box2>
+        {this.props.children}
+      </Kb.Box2>
+    )
+  }
 }
-
-const itemHeight = {height: 100, type: 'fixed'}
-
-// TODO: @jacob - render left list and active operation
-const OperationsList = (props: Props) => (
-  <Kb.Box2 direction="horizontal" fullHeight={true} fullWidth={true}>
-    <Kb.Box2 direction="vertical" fullHeight={true} style={styles.operationsListContainer}>
-      <Kb.BoxGrow>
-        <Kb.List2 itemHeight={itemHeight} items={rows} renderItem={renderItem} />
-      </Kb.BoxGrow>
-    </Kb.Box2>
-    {props.children}
-  </Kb.Box2>
-)
 
 const styles = Styles.styleSheetCreate(() => ({
   operationsListContainer: {

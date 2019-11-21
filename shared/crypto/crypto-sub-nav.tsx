@@ -1,6 +1,7 @@
 import * as Kb from '../common-adapters'
 import * as React from 'react'
 import * as Shim from '../router-v2/shim'
+import * as Constants from '../constants/crypto'
 import {NavigationViewProps, createNavigator, StackRouter, SceneView} from '@react-navigation/core'
 import Encrypt from './operations/encrypt'
 import Decrypt from './operations/decrypt'
@@ -10,10 +11,10 @@ import Verify from './operations/verify'
 const noScreenProps = {}
 
 const cryptoSubRoutes = {
-  decrypt: {getScreen: (): typeof Decrypt => require('./operations/decrypt').default},
-  encrypt: {getScreen: (): typeof Encrypt => require('./operations/encrypt').default},
-  sign: {getScreen: (): typeof Sign => require('./operations/sign').default},
-  verify: {getScreen: (): typeof Verify => require('./operations/verify').default},
+  [Constants.decryptTab]: {getScreen: (): typeof Decrypt => require('./operations/decrypt').default},
+  [Constants.encryptTab]: {getScreen: (): typeof Encrypt => require('./operations/encrypt').default},
+  [Constants.signTab]: {getScreen: (): typeof Sign => require('./operations/sign').default},
+  [Constants.verifyTab]: {getScreen: (): typeof Verify => require('./operations/verify').default},
 }
 
 class CryptoSubNav extends React.PureComponent<NavigationViewProps<any>> {
@@ -27,7 +28,7 @@ class CryptoSubNav extends React.PureComponent<NavigationViewProps<any>> {
 
     return (
       <Kb.Box2 direction="horizontal" fullHeight={true} fullWidth={true}>
-        <ListAndActiveOperation>
+        <ListAndActiveOperation routeSelected={descriptor.state.routeName}>
           <SceneView
             navigation={childNav}
             component={descriptor.getComponent()}
@@ -39,7 +40,7 @@ class CryptoSubNav extends React.PureComponent<NavigationViewProps<any>> {
   }
 }
 
-const initialRouteName = 'encrypt'
+const initialRouteName = Constants.encryptTab
 const CryptoSubNavigator = createNavigator(
   CryptoSubNav,
   StackRouter(Shim.shim(cryptoSubRoutes), {initialRouteName}),
