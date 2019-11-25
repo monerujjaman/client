@@ -34,22 +34,16 @@ const rows: Array<Row> = [
   },
 ]
 
-const itemHeight = {height: 100, type: 'fixed'} as const
+const itemHeight = {height: 50, type: 'fixed'} as const
 
 class OperationsList extends React.PureComponent<Props> {
   _renderItem = (_: number, row: Row) => {
     return (
-      <Kb.ListItem2
-        type="Small"
-        firstItem={true}
-        body={
-          <OperationRow
-            key={row.tab}
-            isSelected={this.props.routeSelected === row.tab}
-            title={row.title}
-            tab={row.tab}
-          />
-        }
+      <OperationRow
+        key={row.tab}
+        isSelected={this.props.routeSelected === row.tab}
+        title={row.title}
+        tab={row.tab}
       />
     )
   }

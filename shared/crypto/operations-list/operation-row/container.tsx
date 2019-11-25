@@ -12,16 +12,16 @@ type OwnProps = {
 const mapStateToProps = (/*state: Container.TypedState*/) => ({})
 
 const mapDispatchToProps = (dispatch: Container.TypedDispatch) => ({
-  _switchOperationTab: (cryptoSubTab: Types.CryptoSubTab) => {
-    dispatch(RouteTreeGen.createNavigateAppend({path: [cryptoSubTab]}))
+  _switchOperationTab: (tab: Types.CryptoSubTab) => {
+    dispatch(RouteTreeGen.createNavigateAppend({path: [tab]}))
   },
 })
 
 const mergeProps = (stateProps, dispatchProps, ownProps: OwnProps) => ({
   ...stateProps,
-  onSelect: dispatchProps._switchOperationTab,
-  title: ownProps.title,
+  onSelect: (tab: Types.CryptoSubTab) => dispatchProps._switchOperationTab(tab),
   tab: ownProps.tab,
+  title: ownProps.title,
 })
 
 export default Container.namedConnect(

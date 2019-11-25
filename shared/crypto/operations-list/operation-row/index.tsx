@@ -12,23 +12,27 @@ type Props = {
 
 const OperationRow = (props: Props) => {
   return (
-    <Kb.ClickableBox onClick={props.onSelect}>
-      <Kb.Box style={styles.rowContainer} className="hover_container">
-        <Kb.Box
-          className={Styles.classNames('hover_contained', 'hover_background_color_blueGreyDark', {
-            background_color_blueGreyDark: props.isSelected,
-          })}
+    <Kb.ListItem2
+      type="Small"
+      firstItem={true}
+      onClick={props.onSelect}
+      body={
+        <Kb.Box2
+          direction="horizontal"
+          fullHeight={true}
+          fullWidth={true}
+          style={props.isSelected ? styles.selected : null}
         >
           <Kb.Text type="BodySemibold">{props.title}</Kb.Text>
-        </Kb.Box>
-      </Kb.Box>
-    </Kb.ClickableBox>
+        </Kb.Box2>
+      }
+    ></Kb.ListItem2>
   )
 }
 
 const styles = Styles.styleSheetCreate(() => ({
-  rowContainer: {
-    height: 90,
+  selected: {
+    backgroundColor: Styles.globalColors.purpleLight,
   },
 }))
 
