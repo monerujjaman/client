@@ -34,10 +34,9 @@ const rows: Array<Row> = [
   },
 ]
 
-const itemHeight = {height: 50, type: 'fixed'} as const
-
 class OperationsList extends React.PureComponent<Props> {
   _renderItem = (_: number, row: Row) => {
+    console.log('JRY renderItem', {row})
     return (
       <OperationRow
         key={row.tab}
@@ -53,7 +52,7 @@ class OperationsList extends React.PureComponent<Props> {
       <Kb.Box2 direction="horizontal" fullHeight={true} fullWidth={true}>
         <Kb.Box2 direction="vertical" fullHeight={true} style={styles.operationsListContainer}>
           <Kb.BoxGrow>
-            <Kb.List2 itemHeight={itemHeight} items={rows} renderItem={this._renderItem} keyProperty="key" />
+            <Kb.List items={rows} renderItem={this._renderItem} keyProperty="key" style={styles.list} />
           </Kb.BoxGrow>
         </Kb.Box2>
         {this.props.children}
@@ -63,6 +62,9 @@ class OperationsList extends React.PureComponent<Props> {
 }
 
 const styles = Styles.styleSheetCreate(() => ({
+  list: {
+    ...Styles.globalStyles.fullHeight,
+  },
   operationsListContainer: {
     backgroundColor: Styles.globalColors.blueGrey,
     borderStyle: 'solid',

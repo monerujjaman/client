@@ -50,7 +50,7 @@ const styles = Styles.styleSheetCreate(() => ({
     height: rowHeight,
   },
   selected: {
-    backgroundColor: Styles.globalColors.purpleLight,
+    backgroundColor: Styles.globalColors.blueLight,
   },
   textContainer: {
     justifyContent: 'center',
