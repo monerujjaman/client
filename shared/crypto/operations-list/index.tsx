@@ -21,34 +21,39 @@ const rows: Array<Row> = [
   {
     isSelected: false,
     tab: Constants.encryptTab,
-    title: 'Encrypt',
+    title: Constants.TabTitles[Constants.encryptTab],
   },
   {
     isSelected: false,
     tab: Constants.decryptTab,
-    title: 'Decrypt',
+    title: Constants.TabTitles[Constants.decryptTab],
   },
   {
     isSelected: false,
     tab: Constants.signTab,
-    title: 'Sign',
+    title: Constants.TabTitles[Constants.signTab],
   },
   {
     isSelected: false,
     tab: Constants.verifyTab,
-    title: 'Verify',
+    title: Constants.TabTitles[Constants.verifyTab],
   },
 ]
 
 class OperationsList extends React.PureComponent<Props> {
-  _getRows = memoize((routeSelected: string) =>
+  static navigationOptions = ownProps => ({
+    header: undefined,
+    title: `Crypto Toolkit • ${Constants.TabTitles[ownProps.routeSelected] ||
+      Constants.TabTitles[Constants.encryptTab]}`,
+  })
+  private getRows = memoize((routeSelected: string) =>
     rows.map(r => ({
       ...r,
       isSelected: routeSelected === r.tab,
     }))
   )
 
-  _renderItem = (_: number, row: Row) => {
+  private renderItem = (_: number, row: Row) => {
     return <OperationRow key={row.tab} isSelected={row.isSelected} title={row.title} tab={row.tab} />
   }
 
@@ -58,8 +63,8 @@ class OperationsList extends React.PureComponent<Props> {
         <Kb.Box2 direction="vertical" fullHeight={true} style={styles.operationsListContainer}>
           <Kb.BoxGrow>
             <Kb.List
-              items={this._getRows(this.props.routeSelected)}
-              renderItem={this._renderItem}
+              items={this.getRows(this.props.routeSelected)}
+              renderItem={this.renderItem}
               keyProperty="key"
               style={styles.list}
             />
