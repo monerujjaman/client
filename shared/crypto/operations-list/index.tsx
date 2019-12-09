@@ -3,6 +3,7 @@ import * as Kb from '../../common-adapters'
 import * as Styles from '../../styles'
 import * as Constants from '../../constants/crypto'
 import * as Types from '../../constants/types/crypto'
+import {memoize} from '../../util/memoize'
 import OperationRow from './operation-row/container'
 
 type Props = {
@@ -11,39 +12,44 @@ type Props = {
 }
 
 type Row = {
+  isSelected: boolean
   title: string
   tab: Types.CryptoSubTab
 }
 
 const rows: Array<Row> = [
   {
+    isSelected: false,
     tab: Constants.encryptTab,
     title: 'Encrypt',
   },
   {
+    isSelected: false,
     tab: Constants.decryptTab,
     title: 'Decrypt',
   },
   {
+    isSelected: false,
     tab: Constants.signTab,
     title: 'Sign',
   },
   {
+    isSelected: false,
     tab: Constants.verifyTab,
     title: 'Verify',
   },
 ]
 
 class OperationsList extends React.PureComponent<Props> {
+  _getRows = memoize((routeSelected: string) =>
+    rows.map(r => ({
+      ...r,
+      isSelected: routeSelected === r.tab,
+    }))
+  )
+
   _renderItem = (_: number, row: Row) => {
-    return (
-      <OperationRow
-        key={row.tab}
-        isSelected={this.props.routeSelected === row.tab}
-        title={row.title}
-        tab={row.tab}
-      />
-    )
+    return <OperationRow key={row.tab} isSelected={row.isSelected} title={row.title} tab={row.tab} />
   }
 
   render() {
@@ -51,7 +57,12 @@ class OperationsList extends React.PureComponent<Props> {
       <Kb.Box2 direction="horizontal" fullHeight={true} fullWidth={true}>
         <Kb.Box2 direction="vertical" fullHeight={true} style={styles.operationsListContainer}>
           <Kb.BoxGrow>
-            <Kb.List items={rows} renderItem={this._renderItem} keyProperty="key" style={styles.list} />
+            <Kb.List
+              items={this._getRows(this.props.routeSelected)}
+              renderItem={this._renderItem}
+              keyProperty="key"
+              style={styles.list}
+            />
           </Kb.BoxGrow>
         </Kb.Box2>
         {this.props.children}

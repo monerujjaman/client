@@ -13,16 +13,16 @@ const mapStateToProps = (/*state: Container.TypedState*/) => ({})
 
 const mapDispatchToProps = (dispatch: Container.TypedDispatch) => ({
   _switchOperationTab: (tab: Types.CryptoSubTab) => {
-    dispatch(RouteTreeGen.createNavigateAppend({path: [tab]}))
+    dispatch(RouteTreeGen.createNavigateAppend({path: [tab], replace: true}))
   },
 })
 
 const mergeProps = (stateProps, dispatchProps, ownProps: OwnProps) => ({
   ...stateProps,
+  isSelected: ownProps.isSelected,
   onSelect: () => dispatchProps._switchOperationTab(ownProps.tab),
   tab: ownProps.tab,
   title: ownProps.title,
-  isSelected: ownProps.isSelected,
 })
 
 export default Container.namedConnect(
