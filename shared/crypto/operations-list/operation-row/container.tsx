@@ -19,9 +19,10 @@ const mapDispatchToProps = (dispatch: Container.TypedDispatch) => ({
 
 const mergeProps = (stateProps, dispatchProps, ownProps: OwnProps) => ({
   ...stateProps,
-  onSelect: (tab: Types.CryptoSubTab) => dispatchProps._switchOperationTab(tab),
+  onSelect: () => dispatchProps._switchOperationTab(ownProps.tab),
   tab: ownProps.tab,
   title: ownProps.title,
+  isSelected: ownProps.isSelected,
 })
 
 export default Container.namedConnect(

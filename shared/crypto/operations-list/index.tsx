@@ -36,7 +36,6 @@ const rows: Array<Row> = [
 
 class OperationsList extends React.PureComponent<Props> {
   _renderItem = (_: number, row: Row) => {
-    console.log('JRY renderItem', {row})
     return (
       <OperationRow
         key={row.tab}
