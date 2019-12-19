@@ -1,6 +1,67 @@
-module Pods_Keybase {
-  umbrella header "Pods-Keybase-umbrella.h"
+### Keybase proof
 
-  export *
-  module * { export * }
+I hereby claim:
+
+  * I am monerujjaman on github.
+  * I am ujjaman (https://keybase.io/ujjaman) on keybase.
+  * I have a public key ASDxS5Cu9-ei5k9-V4IZdUut8rYW3L0b1PIN-Epk_QI3HQo
+
+To claim this, I am signing this object:
+
+```json
+{
+  "body": {
+    "key": {
+      "eldest_kid": "012097cb7a45e9bc07892c73b0d251c5bf7f5ea9a360e4f4da1d6c77fb5135ce69210a",
+      "host": "keybase.io",
+      "kid": "0120f14b90aef7e7a2e64f7e578219754badf2b616dcbd1bd4f20df84a64fd02371d0a",
+      "uid": "e5f6b60391648db51f494f2e124a9e19",
+      "username": "ujjaman"
+    },
+    "merkle_root": {
+      "ctime": 1576767995,
+      "hash": "2533434f8a0eee29847b37d8056dc9d3dca77c3a24bebfa43dae83a758b68476420f9ee8c013c589e12bd0c973666ee59560ef009e5412bb58efc27f094b911a",
+      "hash_meta": "bac5763cb829ef474f344e18d93849f991082784c0b1460c3079adf9a675782e",
+      "seqno": 13813088
+    },
+    "service": {
+      "entropy": "qtaT1olbym3KbLpR8kMlSJd+",
+      "name": "github",
+      "username": "monerujjaman"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "4.7.2"
+  },
+  "ctime": 1576768037,
+  "expire_in": 504576000,
+  "prev": "fec7c2b012a4643d05abfedb0a878ed0c64aaf1ca21b38ccff64b51666e3a8ce",
+  "seqno": 30,
+  "tag": "signature"
 }
+```
+
+with the key [ASDxS5Cu9-ei5k9-V4IZdUut8rYW3L0b1PIN-Epk_QI3HQo](https://keybase.io/ujjaman), yielding the signature:
+
+```
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEg8UuQrvfnouZPfleCGXVLrfK2Fty9G9TyDfhKZP0CNx0Kp3BheWxvYWTESpcCHsQg/sfCsBKkZD0Fq/7bCoeO0MZKrxyiGzjM/2S1FmbjqM7EIDWHLo3Wj3eN+Aq8S90nbJtOXK9+VaY03Lt+btOA8q/PAgHCo3NpZ8RAGAhtijhTrQgeUIEYbziCQB0bItmmF7bJFxihhU8M7G3aau6Rshxxc4ZTD8rR/yBFAhfAXZRMgU3FJue8C51LCqhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIIL206QjXeorKlb32YHsZCMsU2tZ1c95fQK0/YNBJDDBo3RhZ80CAqd2ZXJzaW9uAQ==
+
+```
+
+And finally, I am proving ownership of the github account by posting this as a gist.
+
+### My publicly-auditable identity:
+
+https://keybase.io/ujjaman
+
+### From the command line:
+
+Consider the [keybase command line program](https://keybase.io/download).
+
+```bash
+# look me up
+keybase id ujjaman
+```
